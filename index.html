@@ -24,7 +24,6 @@
 <meta name="twitter:image" content="https://smartbubu.com/images/og-image.png">
 <link rel="icon" type="image/png" sizes="48x48" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -91,10 +90,9 @@
 }
 </script>
 <link rel="icon" href="images/face.webp">
+<link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="tokens.css">
 <script src="booking-config.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&amp;display=swap">
 <style>
 html{scroll-behavior:smooth}
 [hidden]{display:none !important}
@@ -108,9 +106,18 @@ a{color:#2a68ad}a:hover{color:#1f4f86}
 @keyframes sbBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .sb-bubu{animation:sbBob 3.2s ease-in-out infinite}
 @media (prefers-reduced-motion: reduce){.sb-bubu{animation:none}}
+.sb-menu{display:none}
+.sb-menu summary{list-style:none}
+.sb-menu summary::-webkit-details-marker{display:none}
+.sb-menu summary:focus-visible{outline:3px solid #2a68ad;outline-offset:3px}
+.sb-menu a:hover{background:#e8f0ec}
 @media (max-width: 640px){
 .sb-links{display:none !important}
-.sb-logo{height:48px !important}
+.sb-menu{display:block}
+.sb-navright{gap:10px !important}
+.sb-cta-nav{padding:10px 16px !important;font-size:15px}
+.sb-nav{padding:12px 16px !important}
+.sb-logo{height:40px !important}
 .sb-cta-lg{width:100%;justify-content:center;font-size:17px !important;padding:16px 20px !important;box-sizing:border-box}
 .sb-bubu{width:72px !important;height:72px !important}
 .sb-float{right:16px !important;bottom:16px !important}
@@ -124,14 +131,23 @@ a{color:#2a68ad}a:hover{color:#1f4f86}
 
 <header style="background: var(--surface); box-shadow: var(--shadow-card);">
 <nav class="sb-nav" aria-label="Main" style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-<a href="#top" style="display: flex; align-items: center;"><img width="400" height="167" src="images/logo.webp" alt="Smart Bubu — HR Consulting by Anna" class="sb-logo" style="height: 64px; width: auto; display: block;"></a>
-<div style="display: flex; align-items: center; gap: 28px; font-size: 16px; font-weight: 700;">
+<a href="#top" style="display: flex; align-items: center;"><img width="400" height="167" src="images/logo.webp" srcset="images/logo-sm.webp 200w, images/logo.webp 400w" sizes="(max-width: 640px) 96px, 154px" alt="Smart Bubu — HR Consulting by Anna" class="sb-logo" style="height: 64px; width: auto; display: block;"></a>
+<div class="sb-navright" style="display: flex; align-items: center; gap: 28px; font-size: 16px; font-weight: 700;">
 <div class="sb-links" style="display: flex; align-items: center; gap: 28px;">
 <a href="#services">Services</a>
 <a href="#how">How it works</a>
 <a href="#about">About Anna</a>
 </div>
-<a class="sb-cta" href="https://calendly.com/tech4pms/meet-with-bubu" data-booking target="_blank" rel="noopener" style="background: var(--accent); color: var(--ink); padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center;">Book a consultation</a>
+<a class="sb-cta sb-cta-nav" href="https://calendly.com/tech4pms/meet-with-bubu" data-booking target="_blank" rel="noopener" style="background: var(--accent); color: var(--ink); padding: 12px 22px; border-radius: 999px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center;">Book a consultation</a>
+<details class="sb-menu" style="position: relative;">
+<summary aria-label="Open menu" style="width: 44px; height: 44px; border-radius: 12px; background: var(--mint); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--ink);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg></summary>
+<div style="position: absolute; right: 0; top: 54px; z-index: 60; min-width: 210px; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-float); padding: 8px; display: flex; flex-direction: column;">
+<a href="#services" style="padding: 12px 14px; border-radius: 10px;">Services</a>
+<a href="#how" style="padding: 12px 14px; border-radius: 10px;">How it works</a>
+<a href="#about" style="padding: 12px 14px; border-radius: 10px;">About Anna</a>
+<a href="#book" style="padding: 12px 14px; border-radius: 10px;">Book a call</a>
+</div>
+</details>
 </div>
 </nav>
 </header>
@@ -151,7 +167,7 @@ Book Your Consultation with Anna</a>
 </div>
 <div style="flex: 1 1 380px; display: flex; justify-content: center;">
 <div style="position: relative; width: 100%; max-width: 440px; aspect-ratio: 1 / 1; background: var(--surface); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-float);">
-<img width="640" height="828" fetchpriority="high" src="images/mascot-book.webp" alt="The Smart Bubu panda in round glasses, reading a blue book" style="width: 68%; height: auto; display: block;">
+<img width="640" height="828" fetchpriority="high" src="images/mascot-book.webp" srcset="images/mascot-book-sm.webp 320w, images/mascot-book.webp 640w" sizes="(max-width: 640px) 60vw, 300px" alt="The Smart Bubu panda in round glasses, reading a blue book" style="width: 68%; height: auto; display: block;">
 <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; top: 10%; right: 6%;"><path d="M12 2c.6 4.6 2.4 6.9 7 8-4.6 1.1-6.4 3.4-7 8-.6-4.6-2.4-6.9-7-8 4.6-1.1 6.4-3.4 7-8z" fill="#6fa59f"></path></svg>
 <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" style="position: absolute; top: 24%; right: 0;"><path d="M12 2c.6 4.6 2.4 6.9 7 8-4.6 1.1-6.4 3.4-7 8-.6-4.6-2.4-6.9-7-8 4.6-1.1 6.4-3.4 7-8z" fill="#6fa59f"></path></svg>
 </div>
@@ -166,17 +182,17 @@ Book Your Consultation with Anna</a>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
 <article style="background: var(--mint); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="440" height="491" loading="lazy" decoding="async" src="images/recruit.webp" alt="Bubu holding a Welcome sign" style="height: 180px; width: auto; display: block;"></div>
+<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="440" height="491" loading="lazy" decoding="async" src="images/recruit.webp" srcset="images/recruit-sm.webp 220w, images/recruit.webp 440w" sizes="200px" alt="Bubu holding a Welcome sign" style="height: 180px; width: auto; display: block;"></div>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800;">Recruitment</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6;">Find and welcome the right people — role definitions, sourcing, interviews and a smooth first week.</p>
 </article>
 <article style="background: var(--mint); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="420" height="485" loading="lazy" decoding="async" src="images/comply.webp" alt="Bubu checking a compliance checklist" style="height: 180px; width: auto; display: block;"></div>
+<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="420" height="485" loading="lazy" decoding="async" src="images/comply.webp" srcset="images/comply-sm.webp 210w, images/comply.webp 420w" sizes="200px" alt="Bubu checking a compliance checklist" style="height: 180px; width: auto; display: block;"></div>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800;">Compliance</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6;">Policies, contracts and processes that keep you on the right side of employment rules, without the jargon.</p>
 </article>
 <article style="background: var(--mint); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
-<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="440" height="406" loading="lazy" decoding="async" src="images/culture.webp" alt="Two Bubus giving a high five under hearts" style="height: 180px; width: auto; display: block;"></div>
+<div style="background: var(--surface); border-radius: 16px; display: flex; justify-content: center; padding: 12px;"><img width="440" height="406" loading="lazy" decoding="async" src="images/culture.webp" srcset="images/culture-sm.webp 220w, images/culture.webp 440w" sizes="200px" alt="Two Bubus giving a high five under hearts" style="height: 180px; width: auto; display: block;"></div>
 <h3 style="margin: 0; font-size: 22px; font-weight: 800;">Team Culture</h3>
 <p style="margin: 0; font-size: 16px; line-height: 1.6;">Feedback, recognition and team rituals that help people do their best work — and stay.</p>
 </article>
@@ -227,7 +243,7 @@ Book Your Consultation with Anna</a>
 </div>
 </div>
 </div>
-<img width="340" height="332" loading="lazy" decoding="async" class="sb-dash-mascot" src="images/pointing-left.webp" alt="Bubu pointing at the HR dashboard" style="width: 160px; height: auto; flex: none; display: block; margin-left: -48px; position: relative;">
+<img width="340" height="332" loading="lazy" decoding="async" class="sb-dash-mascot" src="images/pointing-left.webp" srcset="images/pointing-left-sm.webp 170w, images/pointing-left.webp 340w" sizes="(max-width: 640px) 110px, 160px" alt="Bubu pointing at the HR dashboard" style="width: 160px; height: auto; flex: none; display: block; margin-left: -48px; position: relative;">
 </div>
 </div>
 </section>
@@ -235,7 +251,7 @@ Book Your Consultation with Anna</a>
 <section id="about" style="background: var(--surface);">
 <div style="max-width: 1200px; margin: 0 auto; padding: clamp(48px, 9vw, 72px) 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px;">
 <div style="flex: 0 1 320px; display: flex; justify-content: center;">
-<div style="width: 280px; height: 280px; border-radius: 50%; background: var(--sky); overflow: hidden; box-shadow: var(--shadow-card); border: 6px solid #ffffff; box-sizing: border-box;"><img width="560" height="625" loading="lazy" decoding="async" src="images/face.webp" alt="Smart Bubu, Anna's panda avatar in round glasses" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;"></div>
+<div style="width: 280px; height: 280px; border-radius: 50%; background: var(--sky); overflow: hidden; box-shadow: var(--shadow-card); border: 6px solid #ffffff; box-sizing: border-box;"><img width="560" height="625" loading="lazy" decoding="async" src="images/face.webp" srcset="images/face-sm.webp 280w, images/face.webp 560w" sizes="268px" alt="Smart Bubu, Anna's panda avatar in round glasses" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;"></div>
 </div>
 <div style="flex: 1 1 480px; display: flex; flex-direction: column; gap: 16px;">
 <h2 style="margin: 0; font-size: 36px; line-height: 1.2; font-weight: 800;">Meet Anna</h2>
@@ -255,33 +271,19 @@ Book Your Consultation with Anna</a>
 Book Your Consultation with Anna</a>
 </div>
 <div style="flex: 1 1 460px; background: #d3e9ee; border-radius: 24px; padding: 20px 0 0 0; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center; color: var(--ink);">
-<img width="400" height="391" loading="lazy" decoding="async" src="images/pointing.webp" alt="Bubu pointing to Anna's booking calendar" style="width: 190px; height: auto; display: block; flex: none; border-bottom-left-radius: 24px;">
+<img width="400" height="391" loading="lazy" decoding="async" src="images/pointing.webp" srcset="images/pointing-sm.webp 200w, images/pointing.webp 400w" sizes="190px" alt="Bubu pointing to Anna's booking calendar" style="width: 190px; height: auto; display: block; flex: none; border-bottom-left-radius: 24px;">
 <div style="flex: 1 1 260px; margin: 0 20px 20px 20px; background: var(--surface); border: 2px solid #2d231e; border-radius: 18px; overflow: hidden; box-shadow: var(--shadow-card);">
 <div style="background: #2a68ad; color: #ffffff; padding: 14px 18px; display: flex; align-items: center; gap: 10px;">
 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg>
 <p style="margin: 0; font-size: 18px; font-weight: 800;">Book with Anna</p>
 </div>
-<div style="padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px;">
-<p style="margin: 0; font-size: 15px; font-weight: 800; text-align: center;">This week · 30-minute call</p>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;">
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<p style="margin: 0; text-align: center; font-size: 14px; font-weight: 700; color: var(--ink-muted);">Mon</p>
-<button type="button" class="sb-slot" data-slot="Mon 10:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">10:00</button>
-<button type="button" class="sb-slot" data-slot="Mon 15:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">15:00</button>
-</div>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<p style="margin: 0; text-align: center; font-size: 14px; font-weight: 700; color: var(--ink-muted);">Tue</p>
-<button type="button" class="sb-slot" data-slot="Tue 11:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">11:00</button>
-<button type="button" class="sb-slot" data-slot="Tue 14:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">14:00</button>
-</div>
-<div style="display: flex; flex-direction: column; gap: 8px;">
-<p style="margin: 0; text-align: center; font-size: 14px; font-weight: 700; color: var(--ink-muted);">Wed</p>
-<button type="button" class="sb-slot" data-slot="Wed 10:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">10:00</button>
-<button type="button" class="sb-slot" data-slot="Wed 16:00" aria-pressed="false" style="min-height: 44px; border: 2px solid #a9c6d8; border-radius: 12px; padding: 0 4px; background: #eaf3fb; color: var(--ink); font: inherit; font-size: 15px; font-weight: 700; cursor: pointer;">16:00</button>
-</div>
-</div>
-<p style="margin: 0; font-size: 14px; text-align: center; color: var(--ink-muted);" id="sb-slot-label" aria-live="polite">Example times. Pick one, then confirm your booking.</p>
-<a class="sb-cta" href="https://calendly.com/tech4pms/meet-with-bubu" data-booking target="_blank" rel="noopener" style="align-self: stretch; text-align: center; background: var(--accent); color: var(--ink); padding: 12px 16px; border-radius: 999px; font-size: 16px; font-weight: 800; text-decoration: none; min-height: 44px; box-sizing: border-box;">Confirm your booking</a>
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 16px;">
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px;">
+<li style="display: flex; gap: 12px; align-items: center; font-size: 16px; font-weight: 700;"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #eaf3fb; border: 2px solid #a9c6d8; display: flex; align-items: center; justify-content: center; color: #2a68ad;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"></rect><path d="M8 3v4M16 3v4M3 10h18"></path></svg></span>See Anna's real availability</li>
+<li style="display: flex; gap: 12px; align-items: center; font-size: 16px; font-weight: 700;"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #eaf3fb; border: 2px solid #a9c6d8; display: flex; align-items: center; justify-content: center; color: #2a68ad;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></span>Pick a day and time that suits you</li>
+<li style="display: flex; gap: 12px; align-items: center; font-size: 16px; font-weight: 700;"><span style="flex: none; width: 36px; height: 36px; border-radius: 50%; background: #eaf3fb; border: 2px solid #a9c6d8; display: flex; align-items: center; justify-content: center; color: #2a68ad;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 7l9 6 9-6"></path></svg></span>Get your confirmation by email</li>
+</ul>
+<a class="sb-cta" href="https://calendly.com/tech4pms/meet-with-bubu" data-booking target="_blank" rel="noopener" style="align-self: stretch; text-align: center; background: var(--accent); color: var(--ink); padding: 12px 16px; border-radius: 999px; font-size: 16px; font-weight: 800; text-decoration: none; min-height: 44px; box-sizing: border-box;">See available times</a>
 </div>
 </div>
 </div>
@@ -291,7 +293,7 @@ Book Your Consultation with Anna</a>
 
 <footer style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 120px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--ink-muted); border-top: 1px solid #c9d6cf;">
 <p style="margin: 0;">© 2026 Smart Bubu · HR Solutions for Modern Teams</p>
-<p style="margin: 0;"><a href="mailto:[ANNA@EMAIL]">[Anna's email]</a> · <a href="#top">Back to top</a></p>
+<p style="margin: 0;"><a href="mailto:[ANNA@EMAIL]">[Anna's email]</a> · <a href="privacy.html">Privacy</a> · <a href="#top">Back to top</a></p>
 </footer>
 
 <div class="sb-float" style="position: fixed; right: 24px; bottom: 24px; z-index: 50; display: flex; align-items: flex-end; gap: 12px;">
@@ -301,7 +303,7 @@ Book Your Consultation with Anna</a>
 <button class="sb-close" type="button" aria-label="Hide message" id="sb-close" style="position: absolute; top: 6px; right: 6px; width: 32px; height: 32px; border: 0; background: transparent; border-radius: 50%; cursor: pointer; color: var(--ink-muted); display: flex; align-items: center; justify-content: center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
 </div>
 <button class="sb-bubu" type="button" aria-label="Chat with Smart Bubu" id="sb-bubu" aria-expanded="true" aria-controls="sb-bubble" style="width: 96px; height: 96px; border-radius: 50%; border: 4px solid #ffffff; padding: 0; background: var(--sky); box-shadow: var(--shadow-float); cursor: pointer; overflow: hidden; flex: none;">
-<img width="560" height="625" loading="lazy" decoding="async" src="images/face.webp" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+<img width="560" height="625" loading="lazy" decoding="async" src="images/face.webp" srcset="images/face-sm.webp 280w, images/face.webp 560w" sizes="268px" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;">
 </button>
 </div>
 
@@ -315,10 +317,7 @@ var url=(window.SMARTBUBU_BOOKING_URL||'').trim();
 if(url){document.querySelectorAll('a[data-booking]').forEach(function(a){a.href=url;});}
 document.getElementById('sb-close').addEventListener('click',function(){set(false);});
 t.addEventListener('click',function(){set(b.hidden);});
-var lbl=document.getElementById('sb-slot-label'),slots=document.querySelectorAll('.sb-slot'),cur=null;
-slots.forEach(function(el){el.addEventListener('click',function(){cur=(cur===el)?null:el;
-slots.forEach(function(o){var on=o===cur;o.setAttribute('aria-pressed',on?'true':'false');o.style.background=on?'var(--accent)':'#eaf3fb';o.style.borderColor=on?'#2d231e':'#a9c6d8';o.style.fontWeight=on?'800':'700';});
-lbl.textContent=cur?cur.getAttribute('data-slot')+' selected. Confirm it on the booking page.':'Example times. Pick one, then confirm your booking.';});});
+document.querySelectorAll('.sb-menu a').forEach(function(a){a.addEventListener('click',function(){a.closest('details').open=false;});});
 })();
 </script>
 </body>

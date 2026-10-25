@@ -2,11 +2,12 @@
 
 Landing page for **Smart Bubu — HR Consulting by Anna**: HR solutions for modern teams.
 
-A plain static site (no build step): `index.html`, `tokens.css` (brand colours, spacing, radii), `booking-config.js` (the booking link), `images/` (WebP), `robots.txt` and `sitemap.xml`.
+A plain static site (no build step): `index.html`, `tokens.css` (brand colours, spacing, radii), `booking-config.js` (the booking link), `images/` (WebP, with smaller phone versions), `fonts/` (Nunito, self-hosted), `privacy.html`, `404.html`, `robots.txt` and `sitemap.xml`.
 
 ## Before going live
 - **Booking link:** open `booking-config.js` and paste the booking page link (Calendly, Cal.com, Google Calendar, Microsoft Bookings…). Every Book button on the site uses it.
-- Replace `[Anna's background…]` and `[Anna's email]` / `mailto:[ANNA@EMAIL]` with real details.
+- Replace `[Anna's background…]` and `[Anna's email]` / `mailto:[ANNA@EMAIL]` with real details in `index.html`.
+- `privacy.html` is a draft: fill in `[Anna's full name]`, `[business address or country]`, `[Anna's email]` and the booking/hosting providers, and have it checked for your clients' countries.
 
 ## SEO
 - Title, description, canonical URL (`https://smartbubu.com/`), Open Graph / Twitter share preview (`images/og-image.png`) and schema.org business data are in the `<head>` of `index.html`.
